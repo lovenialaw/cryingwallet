@@ -1,0 +1,7 @@
+Options -Indexes
+php_value upload_max_filesize 16M
+php_value post_max_size 16M
+php_value max_execution_time 90
+<FilesMatch "\.(sqlite|sqlite3|db|key)$">
+    Require all denied
+</FilesMatch>
