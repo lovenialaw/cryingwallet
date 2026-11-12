@@ -270,6 +270,19 @@ function money(float $amount): string
     return $sign . 'RM ' . number_format(abs($amount), 2);
 }
 
+function export_wallet_payload(): array
+{
+    $pdo = db();
+    $tables = ['categories', 'category_rules', 'imports', 'payee_labels', 'transactions'];
+    $out = ['version' => 1, 'exported_at' => date('c')];
+    foreach ($tables as $table) {
+        $out[$table] = $pdo->query('SELECT * FROM ' . $table)->fetchAll();
+    }
+    $settings = $pdo->query('SELECT key, value FROM settings')->fetchAll();
+    $out['settings'] = array_values(array_filter($settings, static fn($row) => ($row['key'] ?? '') !== 'gemini_api_key'));
+    return $out;
+}
+
 function money_compact(float $amount): string
 {
     $abs = abs($amount);

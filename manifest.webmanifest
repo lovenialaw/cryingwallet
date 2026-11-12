@@ -1,7 +1,8 @@
 {
   "name": "crying wallet",
   "short_name": "crying wallet",
-  "start_url": "./index.php",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#1f2a24",
   "theme_color": "#1f2a24",

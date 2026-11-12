@@ -1,0 +1,8 @@
+/data/*
+!/data/.gitignore
+*.key
+*.sqlite
+*.sqlite3
+.env
+Untitled
+_site/

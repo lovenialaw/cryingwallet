@@ -488,15 +488,20 @@ details.tl-row > summary::-webkit-details-marker { display: none; }
 .tl-edit .cat-select { width: 100%; }
 .tl-edit .hint { margin: 8px 0 0; }
 
-.menu-link {
+.menu-link,
+button.menu-link {
     display: block;
+    width: 100%;
+    text-align: left;
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 16px;
     text-decoration: none;
+    color: inherit;
     margin-bottom: 10px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .print-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }

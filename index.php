@@ -25,6 +25,14 @@ if ($page === 'api') {
     exit;
 }
 
+if ($page === 'backup') {
+    $payload = export_wallet_payload();
+    header('Content-Type: application/json; charset=utf-8');
+    header('Content-Disposition: attachment; filename="crying-wallet-backup.json"');
+    echo json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
 switch ($page) {
     case 'upload':
         render('Add statement', page_upload(), 'upload');
@@ -316,6 +324,8 @@ function page_more(string $month): string
     ob_start();
     ?>
     <?php if ($flashRelabel): ?><div class="flash"><?= htmlspecialchars($flashRelabel) ?></div><?php endif; ?>
+    <a class="menu-link" href="index.html">Open the phone app (keeps data on this device)</a>
+    <a class="menu-link" href="index.php?page=backup">Download a backup for your phone</a>
     <a class="menu-link" href="index.php?page=summary&month=<?= urlencode($month) ?>">Save month summary (PDF)</a>
     <a class="menu-link" href="index.php?page=rules">Receiver matching rules</a>
     <form method="post" action="index.php?page=more&month=<?= urlencode($month) ?>">
